@@ -3,6 +3,8 @@
 - [react-icons](https://react-icons.github.io/react-icons/) // иконки
 - [date-fns](https://date-fns.org/) // формат даты
 - [prop-types](https://www.npmjs.com/package/prop-types) // тайп скрипт на минималках
+- npm i @emotion/styled @emotion/react (https://emotion.sh/docs/introduction) удобное использование
+  CSS
 
 ## Components
 

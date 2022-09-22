@@ -9,4 +9,6 @@ export const theme = Object.freeze({
     secondaryText: '#757575',
   },
   spacing: value => `${4 * value}px`,
+  // padding: ${props => props.theme.spacing(4)};
+  // 4x4
 });

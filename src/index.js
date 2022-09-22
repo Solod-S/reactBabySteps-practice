@@ -4,10 +4,29 @@ import { App } from 'components/App/App';
 // именнованный импорт
 import './index.css';
 // импорт css переменных
+import { ThemeProvider } from '@emotion/react';
+// импорт темы https://emotion.sh/
+import { theme } from './constants';
+//импорт настроек темы для  https://emotion.sh/
 
+// const theme = {
+//   colors: {
+//     white: '#ffffff',
+//     black: '#010101',
+//     green: '#4caf50',
+//     red: '#f44336',
+//     blue: '#2196f3',
+//     primaryText: '#212121',
+//     secondaryText: '#757575',
+//   },
+// };
+// мы берем с константы (импорт)
 ReactDom.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      {/* обварачиваем в тему и в ней передаем цвета (пропсами) */}
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
