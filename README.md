@@ -5,6 +5,9 @@
 - [prop-types](https://www.npmjs.com/package/prop-types) // тайп скрипт на минималках
 - npm i @emotion/styled @emotion/react (https://emotion.sh/docs/introduction) удобное использование
   CSS
+- Theme in emotion.sh
+  - [styled-system] (https://styled-system.com/) Удобный BOX для стилизации компонентов npm i
+    styled-system styled-components
 
 ## Components
 

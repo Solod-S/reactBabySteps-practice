@@ -4,7 +4,8 @@ import { App } from 'components/App/App';
 // именнованный импорт
 import './index.css';
 // импорт css переменных
-import { ThemeProvider } from '@emotion/react';
+// import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from 'styled-components';
 // импорт темы https://emotion.sh/
 import { theme } from './constants';
 //импорт настроек темы для  https://emotion.sh/
@@ -25,6 +26,7 @@ ReactDom.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       {/* обварачиваем в тему и в ней передаем цвета (пропсами) */}
+
       <App />
     </ThemeProvider>
   </React.StrictMode>,

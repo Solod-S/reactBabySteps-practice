@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-
+// import styled from '@emotion/styled';
+import styled from 'styled-components';
 export const EventCard = styled.div`
   position: relative;
   border: 2px dashed black;
