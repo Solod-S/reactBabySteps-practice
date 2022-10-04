@@ -57,6 +57,8 @@
   border-radius: 4px;
   padding: 12px 24px;
   background-color: indigo;
+  align-items: center;
+  display: flex;
 
   color: white;
   font-weight: 500;

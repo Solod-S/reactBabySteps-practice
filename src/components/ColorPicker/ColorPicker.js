@@ -2,7 +2,7 @@ import React from 'react';
 import './ColorPicker.css';
 import classNames from 'classnames';
 
-class ColorPicker extends React.Component {
+class ColorPicker extends React.PureComponent {
   state = {
     activeOptionIdx: 0,
   };

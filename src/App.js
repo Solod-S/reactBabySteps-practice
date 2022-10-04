@@ -10,7 +10,12 @@ import shortid from 'shortid';
 import Filter from './components/TodoList/Filter/Filter';
 import { LoginForm } from './components/LoginForm/LoginForm-FORMIC-YAP';
 import { ProductReviewForm } from './components/ProductReviewForm/ProductReviewForm';
-
+import Modal from './components/Modal/Modal';
+import Clock from './components/Clock/Clock';
+import Tabs from './components/Tabs/Tabs';
+import tabs from './tabs.json';
+import IconButton from './components/IconButton/IconButton';
+import { ReactComponent as IconAdd } from '../src/icons/add.svg';
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
   { label: 'green', color: '#4CAF50' },
@@ -24,7 +29,36 @@ class App extends React.Component {
   state = {
     todos: initialTodoes,
     filter: '',
+    showModal: false,
   };
+  componentDidUpdate(prevProps, prevState) {
+    const thisTodos = this.state.todos;
+    const prevTodos = prevState.todos;
+    if (thisTodos !== prevTodos) {
+      // console.log(`!!Обновилось поле todos!!`);
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+    // console.log(`prevState`, prevState);
+    // console.log(`currentState`, this.state);
+    // if (
+    //   this.state.todos.length !== prevState.todos.length &&
+    //   this.state.todos.length !== 0
+    // ) {
+    //   this.toggleModal();
+    // }
+    // убираение окна добавления заметки если this.state.todos === []
+  }
+  componentDidMount() {
+    const savedTodos = localStorage.getItem('todos');
+    const parsedSavedTodos = JSON.parse(savedTodos);
+    // console.log(parsedSavedTodos);
+    if (parsedSavedTodos) {
+      this.setState({
+        todos: JSON.parse(savedTodos),
+      });
+    }
+  }
+
   deleteTodo = todosId => {
     this.setState(prevState => ({
       todos: prevState.todos.filter(todos => todos.id !== todosId),
@@ -36,10 +70,11 @@ class App extends React.Component {
       text: text,
       completed: false,
     };
-    this.setState(({ todos }) => ({ todos: [newToDo, ...todos] }));
+    this.setState(({ todos }) => ({ todos: [...todos, newToDo] }));
+    this.toggleModal();
   };
   whenFormSubmited = data => {
-    console.log(data);
+    // console.log(data);
   };
   onTogleComplited = todoId => {
     // this.setState(prevState => ({
@@ -64,11 +99,11 @@ class App extends React.Component {
   };
   getVisibleTodos = () => {
     const normalizedFilter = this.state.filter.toLowerCase();
-    console.log(
-      this.state.todos.filter(todo =>
-        todo.text.toLowerCase().includes(normalizedFilter),
-      ),
-    );
+    // console.log(
+    //   this.state.todos.filter(todo =>
+    //     todo.text.toLowerCase().includes(normalizedFilter),
+    //   ),
+    // );
     return this.state.todos.filter(todo =>
       todo.text.toLowerCase().includes(normalizedFilter),
     );
@@ -80,14 +115,32 @@ class App extends React.Component {
     );
   };
   // будем рендерить результат из этой функции по умоланию <TodoList todos = { this.getVisibleTodos }/>
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal } = this.state;
     // const completedTodos = todos.filter(todos => todos.completed).length;
     const completedTodos = this.calculateComplitedTodos();
     const vivibleTodos = this.getVisibleTodos();
     return (
       <>
+        {showModal && (
+          <Modal whenClose={this.toggleModal}>
+            <Clock />
+
+            <TodoEditor whenEditorSubmit={this.cathDataFromEditor}></TodoEditor>
+            {/* <button type="button" onClick={this.toggleModal}>
+              закрыть
+            </button> */}
+          </Modal>
+        )}
+
+        <Tabs items={tabs} />
         <ProductReviewForm></ProductReviewForm>
+
         <LoginForm></LoginForm>
         <h1>Состояние компонента</h1>
         <Counter initialValue={1} />
@@ -104,8 +157,10 @@ class App extends React.Component {
           onDeleteTodo={this.deleteTodo}
           onToggleComplited={this.onTogleComplited}
         ></TodoList>
+        <IconButton onClick={this.toggleModal} aria-label="Добавить заметку">
+          <IconAdd width="20" height="20" fill="white"></IconAdd>
+        </IconButton>
         <Filter value={filter} onChange={this.onChangeFilter} />
-        <TodoEditor whenEditorSubmit={this.cathDataFromEditor}></TodoEditor>
       </>
     );
   }

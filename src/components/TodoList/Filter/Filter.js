@@ -1,10 +1,18 @@
 import React from 'react';
+import './Filter.css';
 const Filter = ({ value, onChange }) => {
   return (
-    <label>
-      Фильтр по имени
-      <input type="text" value={value} onChange={onChange}></input>
-    </label>
+    <div className="TodoFilter">
+      <label className="TodoFilter__label ">
+        Фильтр по имени
+        <input
+          type="text"
+          value={value}
+          onChange={onChange}
+          className="TodoFilter__input "
+        ></input>
+      </label>
+    </div>
   );
 };
 export default Filter;
