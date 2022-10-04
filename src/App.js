@@ -16,6 +16,11 @@ import Tabs from './components/Tabs/Tabs';
 import tabs from './tabs.json';
 import IconButton from './components/IconButton/IconButton';
 import { ReactComponent as IconAdd } from '../src/icons/add.svg';
+import { Player } from './components/Player/Player';
+import { VideoList } from './components/VideoList/VideoList';
+import videos from './videos.json';
+import Reader from './components/Reader/Reader';
+import publications from './publications.json';
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
   { label: 'green', color: '#4CAF50' },
@@ -30,7 +35,9 @@ class App extends React.Component {
     todos: initialTodoes,
     filter: '',
     showModal: false,
+    selectedVideo: null,
   };
+
   componentDidUpdate(prevProps, prevState) {
     const thisTodos = this.state.todos;
     const prevTodos = prevState.todos;
@@ -120,6 +127,9 @@ class App extends React.Component {
       showModal: !showModal,
     }));
   };
+  selectVideo = link => {
+    this.setState({ selectedVideo: link });
+  };
   render() {
     const { todos, filter, showModal } = this.state;
     // const completedTodos = todos.filter(todos => todos.completed).length;
@@ -161,6 +171,10 @@ class App extends React.Component {
           <IconAdd width="20" height="20" fill="white"></IconAdd>
         </IconButton>
         <Filter value={filter} onChange={this.onChangeFilter} />
+        <h1>Selected video: {this.state.selectedVideo}</h1>
+        <VideoList videos={videos} onSelect={this.selectVideo} />
+        <Player url={this.state.selectedVideo} />
+        <Reader items={publications} />
       </>
     );
   }
