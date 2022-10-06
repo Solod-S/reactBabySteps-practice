@@ -21,6 +21,7 @@ import { VideoList } from './components/VideoList/VideoList';
 import videos from './videos.json';
 import Reader from './components/Reader/Reader';
 import publications from './publications.json';
+import PokemonApp from './components/PokemonHttp/PokemonApp';
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
   { label: 'green', color: '#4CAF50' },
@@ -175,6 +176,7 @@ class App extends React.Component {
         <VideoList videos={videos} onSelect={this.selectVideo} />
         <Player url={this.state.selectedVideo} />
         <Reader items={publications} />
+        <PokemonApp />
       </>
     );
   }
