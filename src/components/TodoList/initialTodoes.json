@@ -1,0 +1,6 @@
+[
+  { "id": 1, "text": "Выучить основы Html", "completed": true },
+  { "id": 2, "text": "Выучить основы JS", "completed": true },
+  { "id": 3, "text": "Выучить основы React", "completed": false },
+  { "id": 4, "text": "Выучить основы NodeJs", "completed": false }
+]
