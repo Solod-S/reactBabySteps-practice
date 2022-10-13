@@ -28,6 +28,9 @@ import ColorPickerHook from './components/1Hooks/SignupForm/colorPickerbreakHook
 import SignupFormHook from './components/1Hooks/SignupForm/SignupFormHook';
 import CounterHook from './components/1Hooks/SignupForm/colorPickerbreakHook/Counter/CounterHook';
 import ClockHook from './components/1Hooks/SignupForm/ClockHook/Clock';
+import PokemonAppHook from './components/1Hooks/pokemonHook/PokemonApiHook';
+import CounterUseReducer from './components/1Hooks/CounterUseReducer/Counter';
+import Friends from './components/1Hooks/Friends';
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
   { label: 'green', color: '#4CAF50' },
@@ -191,6 +194,9 @@ class App extends React.Component {
         <CounterHook/>
         <ClockHook/>
         <ClockHook/>
+        <PokemonAppHook/>
+        <CounterUseReducer/>
+        <Friends/>
         <h1>"HOOKS^^^"</h1>
         <LoadMore />
       </>
