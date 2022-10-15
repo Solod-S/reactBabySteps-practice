@@ -31,6 +31,7 @@ import ClockHook from './components/1Hooks/SignupForm/ClockHook/Clock';
 import PokemonAppHook from './components/1Hooks/pokemonHook/PokemonApiHook';
 import CounterUseReducer from './components/1Hooks/CounterUseReducer/Counter';
 import Friends from './components/1Hooks/Friends';
+import UserMenu from './components/1Hooks/context/UserMenu';
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
   { label: 'green', color: '#4CAF50' },
@@ -187,16 +188,17 @@ class App extends React.Component {
         <Reader items={publications} />
         <PokemonApp />
         <CreateMaterialFormApp />
-       
+
         <h1>"HOOKSvvv"</h1>
-        <SignupFormHook/>
+        <SignupFormHook />
         <ColorPickerHook options={colorPickerOptions} />
-        <CounterHook/>
-        <ClockHook/>
-        <ClockHook/>
-        <PokemonAppHook/>
-        <CounterUseReducer/>
-        <Friends/>
+        <CounterHook />
+        <ClockHook />
+        <ClockHook />
+        <PokemonAppHook />
+        <CounterUseReducer />
+        <Friends />
+        <UserMenu />
         <h1>"HOOKS^^^"</h1>
         <LoadMore />
       </>

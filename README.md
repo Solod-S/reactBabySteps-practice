@@ -1,12 +1,8 @@
-
-
-- useEffect и пропуск первого рендера
-- Покемоны
-  - useState
-  - useEffect
-- Счётчик c useReducer
-  - step
-  - state + step
-  - action
-- Мемоизация вычислений с useMemo
-- [Hook flow](https://raw.githubusercontent.com/donavon/hook-flow/master/hook-flow.png)
+- [Доки хуков](https://ru.reactjs.org/docs/hooks-intro.html)
+- useState
+- useEffect
+- useRef
+- useContext
+- React.memo
+- [react-query - хуки для HTTP-запросов](https://github.com/tannerlinsley/react-query)
+- [react-use - библиотека кастомных хуков](https://github.com/streamich/react-use)
